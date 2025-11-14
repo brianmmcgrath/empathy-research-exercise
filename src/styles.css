@@ -1,0 +1,33 @@
+@import "@fontsource/inter/300.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/700.css";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  padding: 30px;
+}
+
+button {
+  font-family: inherit;
+}
+
+textarea {
+  font-family: inherit;
+}
+
+.app-container {
+  background: #FCFCFD;
+  padding: 24px 40px 32px 40px;
+  border: solid 2px #D0D5DD;
+  border-radius: 12px;
+  max-width: 1200px;
+  margin: 0 auto;
+}

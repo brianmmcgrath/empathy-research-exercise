@@ -1,0 +1,61 @@
+<div class="question-card">
+  <div class="question-header">
+    <div class="question-meta">
+      <div class="question-number">Q{{ questionNumber }}</div>
+      <div class="question-type-dropdown">
+        <button 
+          class="type-button" 
+          (click)="showTypeDropdown = !showTypeDropdown"
+          type="button">
+          <fa-icon [icon]="faCircleCheck" *ngIf="question.questionType === 0" />
+          <fa-icon [icon]="faListCheck" *ngIf="question.questionType === 1" />
+          {{ question.questionType === 0 ? 'Single Choice' : 'Multi Choice' }}
+          <span class="chevron">▼</span>
+        </button>
+        <div class="dropdown-menu" *ngIf="showTypeDropdown">
+          <button 
+            (click)="selectOptionsType(0)"
+            type="button">
+            <fa-icon [icon]="faCircleCheck" /> Single Choice
+          </button>
+          <button 
+            (click)="selectOptionsType(1)"
+            type="button">
+            <fa-icon [icon]="faListCheck" /> Multi Choice
+          </button>
+        </div>
+      </div>
+    </div>
+    <button class="delete-button" (click)="deleteQuestion()" type="button">
+      <fa-icon [icon]="faTrash" />
+    </button>
+  </div>
+
+  <textarea
+    [(ngModel)]="questionScript"
+    placeholder="Type your questions and answers options here&#10;- Option 1&#10;- Option 2"
+    class="question-options"
+    (blur)="parseQuestionScript()"
+    rows="4"></textarea>
+
+  <div class="question-footer">
+        <label class="toggle-label">
+      <span>Randomize options</span>
+      <div 
+        class="toggle-switch"
+        [class.active]="question.randomizeOptionsInd"
+        (click)="toggleRandomize()">
+        <div class="toggle-slider"></div>
+      </div>
+    </label>
+    <label class="toggle-label">
+      <span>Make Required</span>
+      <div 
+        class="toggle-switch"
+        [class.active]="question.mandatoryInd"
+        (click)="toggleRequired()">
+        <div class="toggle-slider"></div>
+      </div>
+    </label>
+  </div>
+</div>

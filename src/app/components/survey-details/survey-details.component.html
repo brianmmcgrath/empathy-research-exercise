@@ -1,0 +1,29 @@
+<div class="app-container">
+  <div class="content-wrapper">
+    <header class="header">
+      <div class="header-content">
+        <h1 class="title">{{ survey.title }}</h1>
+      </div>
+      <p class="description">{{ survey.description }}</p>
+    </header>
+
+    <div class="error-message" *ngIf="error">
+      {{ error }}
+    </div>
+
+    <div class="questions-container">
+      <app-question-card
+        *ngFor="let question of survey.questions; let i = index;"
+        [question]="question"
+        [questionNumber]="i + 1"
+        (questionChange)="updateQuestion(i, $event)"
+        (delete)="deleteQuestion(i)">
+      </app-question-card>
+    </div>
+
+    <button class="add-question-button" (click)="addQuestion()" type="button">
+      <fa-icon [icon]="faPlus" />
+      Add a question
+    </button>
+  </div>
+</div>
