@@ -1,15 +1,15 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, BehaviorSubject, throwError } from "rxjs";
-import { catchError, tap, debounceTime, switchMap } from "rxjs/operators";
-import { Survey, Question } from "../models/question.model";
+import { catchError, tap} from "rxjs/operators";
+import { Survey } from "../models/question.model";
 
 @Injectable({
   providedIn: "root",
 })
 export class SurveyService {
   private apiUrl = "https://techtestapi1.azurewebsites.net";
-  private apiKey = "brian@rassoodock.ie"; // Replace with actual email
+  private apiKey = "brian@rassoodock.ie";
 
   private surveySubject = new BehaviorSubject<Survey | null>(null);
   public survey$ = this.surveySubject.asObservable();
@@ -71,7 +71,7 @@ export class SurveyService {
         catchError(this.handleError)
       );
   }
-  
+
   /**
    * Splits a string into an array of strings, using lines that start with '-' or '- ' as delimiters.
    * Each returned string will be the text following each delimiter.
