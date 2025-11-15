@@ -17,6 +17,13 @@
     }
   }
 }
+@media (max-width: 600px) {
+  .question-card {
+    textarea {
+      min-height: 200px;
+    };
+  }
+}
 
 .question-header {
   display: flex;
